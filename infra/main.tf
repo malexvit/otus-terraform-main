@@ -1,4 +1,3 @@
-provider "dfadf"
-{
+provider "dfadf" {
     key = value
 }
