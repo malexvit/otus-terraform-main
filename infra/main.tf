@@ -1,3 +1,0 @@
-provider "dfadf" {
-    key = value
-}
