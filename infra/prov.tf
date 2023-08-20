@@ -8,5 +8,7 @@ terraform {
 }
 
 provider "yandex" {
+  cloud_id = "b1ghefirui1n7uujs2tv"
+  folder_id = "b1gq7gpv6n3h318144sg"
   zone = "ru-central1-b"
 }
