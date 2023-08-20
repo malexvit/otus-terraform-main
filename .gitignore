@@ -2,4 +2,4 @@
 *.tfstate
 .terraform
 *.exe
-.backup
+*.backup
