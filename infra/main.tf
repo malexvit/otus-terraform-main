@@ -38,6 +38,10 @@ resource "yandex_compute_instance" "vm-1" {
     nat_ip_address     = var.nat_ip_address
   }
 
+  provisioner "local-exec" {
+    command = "echo \" The server IP is  ${self.network_interface.0.nat_ip_address}\""
+  }
+
 metadata = {
     user-data = "${file("users.txt")}"
 }
