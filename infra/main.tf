@@ -42,10 +42,23 @@ resource "yandex_compute_instance" "vm-1" {
     command = "echo \" The server IP is  ${self.network_interface.0.nat_ip_address}\""
   }
 
+  connection {
+    type        = "ssh"
+    user        = "sysadmin"
+    private_key = file("~/.ssh/id_rsa")
+    host        = self.network_interface.0.nat_ip_address
+  }
+
+  provisioner "remote-exec" {
+    inline = ["echo 'Check is fine, maybe'"]
+
+  }
+
+  provisioner "local-exec" {
+    command = "ansible-playbook -u sysadmin -i '${self.network_interface.0.nat_ip_address},' --private-key ~/.ssh/id_rsa provision.yml"
+  }
+
 metadata = {
     user-data = "${file("users.txt")}"
 }
 }
-
-
-
